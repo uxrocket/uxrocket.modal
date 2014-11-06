@@ -1,0 +1,26 @@
+{
+  "name": "uxrocket.modal",
+  "version": "0.5.1",
+  "description": "Modal Plugin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uxrocket/uxrocket.modal.git"
+  },
+  "dependencies": {
+	"jquery": "latest",
+	"jquery-colorbox": "latest"
+  },
+  "keywords": [
+    "jQuery",
+    "javascript",
+    "colorbox",
+	"modal",
+	"uxrocket"
+  ],
+  "author": "Bilal Cinarli <bcinarli@gmail.com> (http://bcinarli.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uxrocket/uxrocket.modal/issues"
+  },
+  "homepage": "https://github.com/uxrocket/uxrocket.modal"
+}

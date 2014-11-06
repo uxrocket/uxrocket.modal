@@ -1,0 +1,86 @@
+@import "../vendors/colorbox/colorbox";
+
+// User Style:
+// Change the following styles to modify the appearance of Colorbox.  They are
+// ordered & tabbed in a way that represents the nesting of the generated HTML.
+#cboxOverlay{
+
+}
+
+#colorbox{
+
+}
+
+#cboxContent{
+    background:#fff;
+}
+
+.cboxIframe{
+    background:#fff;
+}
+
+#cboxError{
+    padding:50px;
+    border: none;
+}
+
+#cboxLoadedContent{
+    padding: 10px;
+}
+
+#cboxTitle{
+
+}
+
+#cboxCurrent{
+
+}
+
+#cboxLoadingGraphic{
+    background: url("../images/loading.gif") center no-repeat;
+}
+
+/* these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles */
+#cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose { }
+
+/* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
+#cboxPrevious:active, #cboxNext:active, #cboxSlideshow:active, #cboxClose:active { }
+
+#cboxSlideshow{
+
+}
+
+#cboxPrevious,
+#cboxNext {
+
+}
+
+#cboxPrevious{
+
+    &:hover {}
+}
+
+#cboxNext{
+    &:hover {}
+}
+
+#cboxClose {
+    position:absolute;
+    top:3px;
+    right:3px;
+    @include dims(30px);
+    @extend .icon-cross !optional;
+    overflow: hidden;
+    display: block;
+    background-color: #ccc;
+    text-indent: 0;
+
+    &:hover {}
+
+    &:before {
+        @extend %font-icon;
+        display: block;
+        padding: 5px 8px;
+        color: #fff;
+    }
+}
