@@ -1,4 +1,6 @@
-@import "../vendors/colorbox/colorbox";
+/* @author Bilal Cinarli */
+	$modal-version: "0.6.0";
+//@import "../vendors/colorbox/colorbox";
 
 // User Style:
 // Change the following styles to modify the appearance of Colorbox.  They are
@@ -78,7 +80,7 @@
     &:hover {}
 
     &:before {
-        @extend %font-icon;
+        @extend %font-icon !optional;
         display: block;
         padding: 5px 8px;
         color: #fff;
