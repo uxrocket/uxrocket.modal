@@ -79,7 +79,7 @@ height                     | Açılan içerik penceresi için ön tanımlı yük
 inner-width                | 'width' tanımı için alternatif kullanımdır. Modal içindeki border ve buton genişliklerini hesaplamadan sadece yüklenen içerik kısmının genişliğini belirler.
 inner-height               | 'height' tanımı için alternatif kullanımdır. Modal içindeki border ve buton genişliklerini hesaplamadan sadece yüklenen içerik kısmının genişliğini belirler.
 max-width                  | Yüklenen içeriğin kendi genişliğinden bağımsız olarak, modal penceresinin maksimum genişliğini belirler.
-maxHeight                  | Yüklenen içeriğin kendi yüksekliğinden bağımsız olarak, modal penceresinin maksimum yüksekliğini
+max-height                  | Yüklenen içeriğin kendi yüksekliğinden bağımsız olarak, modal penceresinin maksimum yüksekliğini
 
 
 Callback			 | &nbsp;
