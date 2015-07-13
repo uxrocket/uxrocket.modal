@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Modal Samples</title>
+
+    <link rel="stylesheet" href="../bower_components/colorbox/example3/colorbox.css" />
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/colorbox/jquery.colorbox-min.js"></script>
+    <script src="../lib/uxrocket.modal.js"></script>
+
+    <script>
+        $(function(){
+            $.uxmodal({ html: "call test" });
+
+            $(".modal").modal();
+        });
+    </script>
+
+    <style>
+        .modal-window {
+            min-width: 200px;
+            min-height: 200px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="example">
+    <p>Sayfa içinde ya da dışarıda bulunmayan <a class="modal" style="text-decoration: underline" data-html="Test" data-inner-width="200" data-inner-height="200">tanımlanmış içerik</a> gösterimi</p>
+
+    <p>Başka bir <a href="./internal.html" class="modal">sayfaya</a> ajax</p>
+
+    <p><a href="http://player.vimeo.com/video/2285902" class="modal" data-iframe="true" data-inner-width="500" data-inner-height="409">Flash/Video gösterimi</a> (iframe ile vimeo videosu)</p>
+
+    <p>Başka bir <a href="http://bcinarli.com" class="modal" data-iframe="true" data-width="80%" data-height="80%">sayfaya</a> iframe</p>
+
+    <p>Sayfa içindeki <a href="#hidden-content" class="modal" data-inline="true">gizli bir içerik</a> gösterimi.</p>
+
+    <p>Callback <a href="http://bcinarli.com" class="modal" data-on-ready="onReady()" data-on-open="onOpen()" data-on-load="onLoad()" data-on-complete="onComplete()" data-on-cleanup="onCleanup"
+                   data-on-closed="onClosed()">örnekleri</a> (console'da tetiklenen
+        callbackleri görebilirsiniz).</p>
+</div>
+
+<div class="hide" style="display: none">
+    <div id="hidden-content" class="modal-window" style="width: 480px">
+        <p>Sayfada normalde gizlenmiş olan bir içeriğin modal pencerede çağrılması</p>
+    </div>
+</div>
+
+<script>
+    var onReady = function(){
+        console.log("onReady: Modal plugini elemana bind oldu");
+    };
+
+    var onOpen = function(){
+        console.log("onOpen: Modal plugini, pencereyi açıyor.");
+    };
+
+    var onLoad = function(){
+        console.log("onLoad: Modal plugini, içeriği yükledi");
+    };
+
+    var onComplete = function(){
+        console.log("onComplete: Modal plugini, pencere açılışını ve yüklemeyi tamamladı");
+    };
+
+    var onCleanup = function(){
+        console.log("onCleanup: Modal plugini kapanmaya hazırlandı");
+    };
+
+    var onClosed = function(){
+        console.log("onClosed: Modal plugini kapandı");
+    };
+</script>
+</body>
+</html>
