@@ -67,7 +67,7 @@ innerWidth           | false            | 'width' tanımı için alternatif kull
 innerHeight          | false            | 'height' tanımı için alternatif kullanımdır. Modal içindeki border ve buton genişliklerini hesaplamadan sadece yüklenen içerik kısmının genişliğini belirler.
 maxWidth             | false            | Yüklenen içeriğin kendi genişliğinden bağımsız olarak, modal penceresinin maksimum genişliğini belirler.
 maxHeight            | false            | Yüklenen içeriğin kendi yüksekliğinden bağımsız olarak, modal penceresinin maksimum yüksekliğini belirler.
-
+openOnload           | false            | Sayfa yüklenir yüklenmez, içeriğin modal penceresinde açılmasını sağlar. Sonrasında ilgili elemana tıklayarak tekrar açılmasına imkan verir.
 
 Data Attribute			   | &nbsp;
 -------------------------- | -----
@@ -79,7 +79,8 @@ height                     | Açılan içerik penceresi için ön tanımlı yük
 inner-width                | 'width' tanımı için alternatif kullanımdır. Modal içindeki border ve buton genişliklerini hesaplamadan sadece yüklenen içerik kısmının genişliğini belirler.
 inner-height               | 'height' tanımı için alternatif kullanımdır. Modal içindeki border ve buton genişliklerini hesaplamadan sadece yüklenen içerik kısmının genişliğini belirler.
 max-width                  | Yüklenen içeriğin kendi genişliğinden bağımsız olarak, modal penceresinin maksimum genişliğini belirler.
-max-height                  | Yüklenen içeriğin kendi yüksekliğinden bağımsız olarak, modal penceresinin maksimum yüksekliğini
+max-height                 | Yüklenen içeriğin kendi yüksekliğinden bağımsız olarak, modal penceresinin maksimum yüksekliğini
+open-onload                | Sayfa yüklenir yüklenmez, içeriğin modal penceresinde açılmasını sağlar. Sonrasında ilgili elemana tıklayarak tekrar açılmasına imkan verir.
 
 
 Callback			 | &nbsp;
