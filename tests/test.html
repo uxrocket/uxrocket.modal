@@ -12,9 +12,13 @@
 
     <script>
         $(function(){
-            $.uxmodal({ html: "call test" });
+            //$.uxmodal({ html: "call test" });
 
             $(".modal").modal();
+            $(".modal2").modal({
+                html: "<p>Otomatik açıldıktan sonra, tekrarında <code>on('click')</code> şeklinde elemana tıklayarak çalışacaktır.",
+                openOnload: true
+            });
         });
     </script>
 
@@ -37,6 +41,8 @@
     <p>Başka bir <a href="http://bcinarli.com" class="modal" data-iframe="true" data-width="80%" data-height="80%">sayfaya</a> iframe</p>
 
     <p>Sayfa içindeki <a href="#hidden-content" class="modal" data-inline="true">gizli bir içerik</a> gösterimi.</p>
+
+    <p>Otomatik olarak açılıp, sonrasında <a href="#" class="modal2"><code>on('click')</code></a> ile çalışma durumu.</p>
 
     <p>Callback <a href="http://bcinarli.com" class="modal" data-on-ready="onReady()" data-on-open="onOpen()" data-on-load="onLoad()" data-on-complete="onComplete()" data-on-cleanup="onCleanup"
                    data-on-closed="onClosed()">örnekleri</a> (console'da tetiklenen
