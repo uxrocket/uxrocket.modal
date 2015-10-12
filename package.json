@@ -1,26 +1,41 @@
 {
   "name": "uxrocket.modal",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "description": "Modal Plugin",
   "repository": {
     "type": "git",
     "url": "https://github.com/uxrocket/uxrocket.modal.git"
   },
   "dependencies": {
-	"jquery": "latest",
-	"jquery-colorbox": "latest"
+    "jquery": "latest"
   },
   "keywords": [
     "jQuery",
     "javascript",
-    "colorbox",
-	"modal",
-	"uxrocket"
+    "modal",
+    "uxrocket"
   ],
   "author": "Bilal Cinarli <bcinarli@gmail.com> (http://bcinarli.com/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/uxrocket/uxrocket.modal/issues"
   },
-  "homepage": "https://github.com/uxrocket/uxrocket.modal"
+  "homepage": "https://github.com/uxrocket/uxrocket.modal",
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-connect": "^2.2.0",
+    "gulp-csslint": "^0.2.0",
+    "gulp-header": "^1.7.1",
+    "gulp-jshint": "^1.11.2",
+    "gulp-mocha-phantomjs": "^0.10.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.4.1",
+    "mocha": "^2.3.3",
+    "phantomjs": "^1.9.18"
+  }
 }
