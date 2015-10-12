@@ -54,9 +54,18 @@ $modal-version: 1.0.0;
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        content: "X";
         background-color: #ccc;
         color: #fff;
+        font-family: sans-serif;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:before {
+            content: "X";
+            font-size: .8em;
+            line-height: 20px;
+        }
     }
 }
 
