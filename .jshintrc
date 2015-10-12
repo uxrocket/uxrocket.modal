@@ -15,6 +15,7 @@
     "Handlebars": true,
     "jQuery": true,
     "$": true,
-    "define": false
+    "define": false,
+    "location":true
   }
 }
