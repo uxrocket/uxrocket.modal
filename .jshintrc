@@ -16,6 +16,7 @@
     "jQuery": true,
     "$": true,
     "define": false,
-    "location":true
+    "location":true,
+    "document":true
   }
 }

@@ -28,7 +28,17 @@ $modal-version: 1.0.0;
         border-radius: 3px;
         background-color: #fff;
         box-sizing: border-box;
+        box-shadow: 0 0 2px rgba(0, 0, 0, .5);
         transition: all ease .3s;
+    }
+
+    &-drag {
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: move;
+        width: 100%;
+        height: 24px;
     }
 
     &-content {
