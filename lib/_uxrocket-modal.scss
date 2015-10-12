@@ -28,6 +28,7 @@ $modal-version: 1.0.0;
         border-radius: 3px;
         background-color: #fff;
         box-sizing: border-box;
+        transition: all ease .3s;
     }
 
     &-loading {
@@ -44,6 +45,18 @@ $modal-version: 1.0.0;
             box-sizing: border-box;
             animation: uxr-modal-loading 2s infinite linear;
         }
+    }
+
+    &-close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        content: "X";
+        background-color: #ccc;
+        color: #fff;
     }
 }
 
