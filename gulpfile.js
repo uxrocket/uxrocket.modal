@@ -13,6 +13,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     sourcemaps = require('gulp-sourcemaps'),
     uglify = require('gulp-uglify'),
+    connect = require('gulp-connect'),
 
 // sass
     sass = require('gulp-sass'),
@@ -96,6 +97,12 @@ var tasks = {
             .pipe(rename(pkg.name + '.min.js'))
             .pipe(notify('Script file uglified'))
             .pipe(gulp.dest(paths.dist));
+    },
+
+    connect: function(){
+        connect.server({
+            port: 8080
+        });
     }
 };
 
@@ -108,6 +115,7 @@ gulp.task('scripts', ['lint'], function() {
     return tasks.scripts();
 });
 gulp.task('mocha', tasks.mocha);
+gulp.task('connect', tasks.connect);
 
 gulp.task('watch', ['csslint', 'sass', 'lint', 'scripts', 'mocha'], function() {
     gulp.watch(paths.lib + '**/*.scss', ['sass']);
@@ -115,4 +123,4 @@ gulp.task('watch', ['csslint', 'sass', 'lint', 'scripts', 'mocha'], function() {
     gulp.watch(paths.lib + '**/*.js', ['lint', 'scripts', 'mocha']);
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['connect', 'watch']);
