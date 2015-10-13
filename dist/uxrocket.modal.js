@@ -23,7 +23,7 @@
 
         overlay = '<div id="uxr-modal-overlay"></div>',
         content = '<div id="{{id}}" class="uxr-modal-container uxr-modal-loading">' +
-                  '    <div class="uxr-modal-drag"></div>' +
+                  '    <div class="uxr-modal-drag uxr-modal-hide"></div>' +
                   '    <div class="uxr-modal-content"></div>' +
                   '    <a href="#" class="uxr-modal-close uxr-modal-hide"></a>' +
                   '</div>',
@@ -264,6 +264,17 @@
 
         this.$content.removeClass(utils.getClassname('loading'));
 
+        if(this.options.close) {
+            this.$content
+                .find('.' + utils.getClassname('close'))
+                .removeClass(utils.getClassname('hide'));
+        }
+
+        if(this.options.allowMultiple){
+            this.$content
+                .find('.' + utils.getClassname('drag'))
+                .removeClass(utils.getClassname('hide'));
+        }
 
         if(!this.inpage) {
             loadedContent.html(this.html);
@@ -271,13 +282,6 @@
 
         else {
             loadedContent.append(this.html);
-        }
-
-
-        if(this.options.close) {
-            this.$content
-                .find('.' + utils.getClassname('close'))
-                .removeClass(utils.getClassname('hide'));
         }
 
         this.resize();
