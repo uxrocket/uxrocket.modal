@@ -102,6 +102,7 @@
         instance++;
 
         this.init();
+
     };
 
     Modal.prototype.init = function() {
@@ -115,41 +116,49 @@
 
         this.$el.addClass(utils.getClassname('ready'));
 
+        // direct call
+        if(this.el === null) {
+            this.bindGenericActions();
+            this.prepare();
+        }
+
         this.emitEvent('ready');
     };
 
     Modal.prototype.bindUIActions = function() {
         var _this = this;
 
-        this.$el.on(events.click, function(e) {
-            e.preventDefault();
+        if(this.el) {
+            this.$el.on(events.click, function(e) {
+                e.preventDefault();
 
-            // do not open same modal more then once
-            if(typeof openedInstances[_this._instance] !== 'undefined') {
-                return;
-            }
+                // do not open same modal more then once
+                if(typeof openedInstances[_this._instance] !== 'undefined') {
+                    return;
+                }
 
-            _this.emitEvent('start');
-            _this.prepare();
-        })
-            .on(events.ready, function() {
-                _this.onReady();
+                _this.emitEvent('start');
+                _this.prepare();
             })
-            .on(events.open, function() {
-                _this.onOpen();
-            })
-            .on(events.start, function() {
-                _this.onStart();
-            })
-            .on(events.load, function() {
-                _this.onLoad();
-            })
-            .on(events.close, function() {
-                _this.onClose();
-            })
-            .on(events.remove, function() {
-                _this.onRemove();
-            });
+                .on(events.ready, function() {
+                    _this.onReady();
+                })
+                .on(events.open, function() {
+                    _this.onOpen();
+                })
+                .on(events.start, function() {
+                    _this.onStart();
+                })
+                .on(events.load, function() {
+                    _this.onLoad();
+                })
+                .on(events.close, function() {
+                    _this.onClose();
+                })
+                .on(events.remove, function() {
+                    _this.onRemove();
+                });
+        }
 
         $('body')
             .on(events.click + ' ' + events.touchstart, '#uxr-modal-overlay', function() {
@@ -169,6 +178,27 @@
                 modal.move.drag(e);
             }).on(events.mouseup + ' ' + events.touchend, function() {
                 modal.move.stop();
+            });
+    };
+
+    Modal.prototype.bindGenericActions = function() {
+        var _this = this;
+
+        $('body')
+            .on(events.open, function() {
+                _this.onOpen();
+            })
+            .on(events.start, function() {
+                _this.onStart();
+            })
+            .on(events.load, function() {
+                _this.onLoad();
+            })
+            .on(events.close, function() {
+                _this.onClose();
+            })
+            .on(events.remove, function() {
+                _this.onRemove();
             });
     };
 
@@ -270,7 +300,7 @@
                 .removeClass(utils.getClassname('hide'));
         }
 
-        if(this.options.allowMultiple){
+        if(this.options.allowMultiple) {
             this.$content
                 .find('.' + utils.getClassname('drag'))
                 .removeClass(utils.getClassname('hide'));
@@ -373,7 +403,9 @@
     };
 
     Modal.prototype.emitEvent = function(which) {
-        this.$el.trigger(events[which]);
+        var $el = (this.el !== null) ? this.$el : $('body');
+
+        $el.trigger(events[which]);
     };
 
     Modal.prototype.getOpenedInstances = function() {
@@ -508,7 +540,7 @@
 
         // direct call to dialog
         if(typeof this === 'function') {
-            Modal(null, options, null);
+            new Modal(null, options, null);
             return;
         }
 
@@ -542,7 +574,7 @@
         activeInstance.close();
     };
 
-    ux.version = '1.1.0';
+    ux.version = '1.2.0';
 
     ux.settings = defaults;
 }));
