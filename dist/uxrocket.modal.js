@@ -425,7 +425,7 @@
         closeFromOverlay: function() {
             var activeInstance = openedInstances[openedInstances.lastInstance];
 
-            if(Object.keys(openedInstances).length === 1) {
+            if(Object.keys(openedInstances).length <= 1) {
                 return;
             }
 
@@ -557,7 +557,7 @@
     ux.resize = function() {
         var activeInstance = openedInstances[openedInstances.lastInstance];
 
-        if(Object.keys(openedInstances).length === 1) {
+        if(Object.keys(openedInstances).length <= 1) {
             return;
         }
 
@@ -567,7 +567,7 @@
     ux.close = function() {
         var activeInstance = openedInstances[openedInstances.lastInstance];
 
-        if(Object.keys(openedInstances).length === 1) {
+        if(Object.keys(openedInstances).length <= 1) {
             return;
         }
 
