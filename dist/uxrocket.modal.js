@@ -246,7 +246,7 @@
                 _this.html = data;
                 setTimeout(function() {
                     _this.emitEvent('load');
-                }, 2000);
+                });
             });
         }
         else if(this.href !== false) {
