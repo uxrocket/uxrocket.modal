@@ -205,7 +205,12 @@
     Modal.prototype.prepare = function() {
         var css = {},
             $overlay = $('#uxr-modal-overlay'),
-            _content = content.replace('{{id}}', 'uxr-modal-instance-' + this._instance);
+            _content = content.replace('{{id}}', 'uxr-modal-instance-' + this._instance),
+            _appendTo = 'body';
+
+        if(this.options.appendTo !== 'body') {
+            _appendTo = ($(utils.escapeSelector(this.options.appendTo)).length === 0) ? 'body' : this.options.appendTo;
+        }
 
         if(!this.options.allowMultiple && modal.isOnlyInstance()) {
             modal.closeFromOverlay();
@@ -213,7 +218,7 @@
 
         if(this.options.blockUI) {
             if($overlay.length === 0) {
-                $(utils.escapeSelector(this.options.appendTo)).append(overlay);
+                $(utils.escapeSelector(_appendTo)).append(overlay);
             }
             else {
                 $overlay.removeClass(utils.getClassname('hide'));
@@ -239,7 +244,7 @@
                 this.$content.css(css);
             }
 
-            $(utils.escapeSelector(this.options.appendTo)).append(this.$content);
+            $(utils.escapeSelector(_appendTo)).append(this.$content);
         }
 
         else {
@@ -425,15 +430,16 @@
         closeFromOverlay: function() {
             var activeInstance = openedInstances[openedInstances.lastInstance];
 
-            if(Object.keys(openedInstances).length <= 1) {
-                return;
-            }
+            if(this.hasInstances()) {
+                if(!activeInstance.options.overlayClose) {
+                    return;
+                }
 
-            if(!activeInstance.options.overlayClose) {
-                return;
+                activeInstance.close();
             }
-
-            activeInstance.close();
+        },
+        hasInstances    : function() {
+            return Object.keys(openedInstances).length > 1;
         },
         isOnlyInstance  : function() {
             return (Object.keys(openedInstances).length - 1) === 1;
@@ -557,24 +563,20 @@
     ux.resize = function() {
         var activeInstance = openedInstances[openedInstances.lastInstance];
 
-        if(Object.keys(openedInstances).length <= 1) {
-            return;
+        if(modal.hasInstances()) {
+            activeInstance.resize();
         }
-
-        activeInstance.resize();
     };
 
     ux.close = function() {
         var activeInstance = openedInstances[openedInstances.lastInstance];
 
-        if(Object.keys(openedInstances).length <= 1) {
-            return;
+        if(modal.hasInstances()) {
+            activeInstance.close();
         }
-
-        activeInstance.close();
     };
 
-    ux.version = '1.2.0';
+    ux.version = '1.2.1';
 
     ux.settings = defaults;
 }));
