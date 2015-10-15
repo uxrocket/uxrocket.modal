@@ -10,10 +10,50 @@
     <script src="../lib/uxrocket.modal.js"></script>
 
     <script>
-        $(function(){
-            $(".modal").modal({ allowMultiple: true, maxHeight: '90%' });
-            $(".modal2").modal({
-               html: "<p>Hello World!</p>"
+        var directCall;
+
+        $(function() {
+            $(".modal").uxrmodal({maxHeight: '90%'});
+            $(".modal2").uxrmodal({
+                html: "<p>Hello World!</p>"
+            });
+            $(".modal3").uxrmodal({
+                allowMultiple: true,
+                onReady      : function() {
+                    console.log("From Options/ onReady: Modal plugin bind to element");
+                }, onStart   : function() {
+                    console.log("From Options/ onStart: Modal plugin started to open");
+                },
+                onOpen       : function() {
+                    console.log("From Options/ onOpen: Modal plugin window opened and stated to load");
+                },
+                onLoad       : function() {
+                    console.log("From Options/ onLoad: Modal plugin content loaded");
+                },
+                onClose      : function() {
+                    console.log("From Options/ onClose: Modal plugin closed");
+                }
+            });
+
+            directCall = $.uxrmodal({
+                href      : '#hidden-content',
+                onReady   : function() {
+                    console.log("Direct Call/ onReady: Modal plugin bind to element");
+                }, onStart: function() {
+                    console.log("Direct Call/ onStart: Modal plugin started to open");
+                },
+                onOpen    : function() {
+                    console.log("Direct Call/ onOpen: Modal plugin window opened and stated to load");
+                },
+                onLoad    : function() {
+                    console.log("Direct Call/ onLoad: Modal plugin content loaded");
+                },
+                onClose   : function() {
+                    console.log("Direct Call/ onClose: Modal plugin closed");
+                },
+                onRemove  : function() {
+                    console.log("Direct Call/ onRemove: Modal plugin removed. When modal with direct call closed, it is automatically unbind from document");
+                }
             });
         });
     </script>
@@ -28,45 +68,49 @@
 </head>
 <body>
 <div class="example">
-    <p>Sayfa içinde ya da dışarıda bulunmayan <a class="modal2" style="text-decoration: underline" data-html="Test" data-inner-width="200" data-inner-height="200" id="empty">tanımlanmış içerik</a> gösterimi</p>
+    <p>Sayfa içinde ya da dışarıda bulunmayan <a class="modal2" style="text-decoration: underline" data-html="Test" data-inner-width="200" data-inner-height="200" id="empty">tanımlanmış içerik</a>
+        gösterimi</p>
 
     <p>Başka bir <a href="./internal.html" class="modal" id="internal">sayfaya</a> ajax</p>
 
-    <p><a href="http://player.vimeo.com/video/2285902" class="modal" data-fixed="true" data-max-height="90%" data-iframe="true" data-width="500" data-height="409" id="video">Flash/Video gösterimi</a> (iframe ile vimeo videosu)</p>
+    <p><a href="http://player.vimeo.com/video/2285902" class="modal" data-fixed="true" data-max-height="90%" data-iframe="true" data-width="500" data-height="409" id="video">Flash/Video gösterimi</a>
+        (iframe ile vimeo videosu)</p>
 
     <p>Başka bir <a href="http://bcinarli.com" id="iframe" class="modal" data-iframe="true" data-width="80%" data-height="80%">sayfaya</a> iframe</p>
 
-    <p>Sayfa içindeki <a href="#hidden-content" class="modal" data-inline="true" id="inline">gizli bir içerik</a> gösterimi.</p>
+    <p>Sayfa içindeki <a href="#hidden-content" class="modal3" id="inline">gizli bir içerik</a> gösterimi.</p>
 
-    <p>Callback <a href="./internal.html" class="modal" data-on-ready="onReady()" data-on-start="onStart()" data-on-open="onOpen()" data-on-load="onLoad()" data-on-close="onClose()">örnekleri</a> (console'da tetiklenen callbackleri görebilirsiniz).</p>
+    <p>Callback <a href="./internal.html" class="modal" data-on-ready="onReady()" data-on-start="onStart()" data-on-open="onOpen()" data-on-load="onLoad()" data-on-close="onClose()">örnekleri</a>
+        (console'da tetiklenen callbackleri görebilirsiniz).</p>
 </div>
 
 <div class="hide" style="display: none">
     <div id="hidden-content" class="modal-window" style="width: 480px">
         <p>Sayfada normalde gizlenmiş olan bir içeriğin modal pencerede çağrılması</p>
+
         <p>İkinci bir <a href="internal.html" class="modal">modal</a></p>
     </div>
 </div>
 
 <script>
-    var onReady = function(){
-        console.log("onReady: Modal plugini elemana bind oldu");
+    var onReady = function() {
+        console.log("From Data/ onReady: Modal plugin bind to element");
     };
 
-    var onStart = function(){
-        console.log("onStart: Modal plugini, pencereyi açmadan önce");
+    var onStart = function() {
+        console.log("From Data/ onStart: Modal plugin started to open");
     };
 
-    var onOpen = function(){
-        console.log("onOpen: Modal plugini, pencereyi açıp, içeriği yüklemeye başladı");
+    var onOpen = function() {
+        console.log("From Data/ onOpen: Modal plugin window opened and stated to load");
     };
 
-    var onLoad = function(){
-        console.log("onLoad: Modal plugini, içeriği yükledi");
+    var onLoad = function() {
+        console.log("From Data/ onLoad: Modal plugin content loaded");
     };
 
-    var onClose = function(){
-        console.log("onClose: Modal plugini kapandı");
+    var onClose = function() {
+        console.log("From Data/ onClose: Modal plugin closed");
     };
 </script>
 </body>
