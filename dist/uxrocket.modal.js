@@ -91,6 +91,12 @@
         this._name = rocketName;
         this._defaults = defaults;
         this._instance = instance;
+        this._direct = false;
+
+        if(el === null) {
+            el = document.createElement('a');
+            this._direct = true;
+        }
 
         this.el = el;
         this.$el = $(el);
@@ -115,20 +121,18 @@
 
         this.$el.addClass(utils.getClassname('ready'));
 
-        // direct call
-        if(this.el === null) {
-            this.bindGenericActions();
+        this.emitEvent('ready');
+
+        if(this._direct === true) {
             this.prepare();
         }
-
-        this.emitEvent('ready');
     };
 
     Modal.prototype.bindUIActions = function() {
         var _this = this;
 
-        if(this.el) {
-            this.$el.on(events.click, function(e) {
+        this.$el
+            .on(events.click, function(e) {
                 e.preventDefault();
 
                 // do not open same modal more then once
@@ -136,28 +140,26 @@
                     return;
                 }
 
-                _this.emitEvent('start');
                 _this.prepare();
             })
-                .on(events.ready, function() {
-                    _this.onReady();
-                })
-                .on(events.open, function() {
-                    _this.onOpen();
-                })
-                .on(events.start, function() {
-                    _this.onStart();
-                })
-                .on(events.load, function() {
-                    _this.onLoad();
-                })
-                .on(events.close, function() {
-                    _this.onClose();
-                })
-                .on(events.remove, function() {
-                    _this.onRemove();
-                });
-        }
+            .on(events.ready, function() {
+                _this.onReady();
+            })
+            .on(events.open, function() {
+                _this.onOpen();
+            })
+            .on(events.start, function() {
+                _this.onStart();
+            })
+            .on(events.load, function() {
+                _this.onLoad();
+            })
+            .on(events.close, function() {
+                _this.onClose();
+            })
+            .on(events.remove, function() {
+                _this.onRemove();
+            });
 
         $('body')
             .on(events.click + ' ' + events.touchstart, '#uxr-modal-overlay', function() {
@@ -180,33 +182,9 @@
             });
     };
 
-    Modal.prototype.bindGenericActions = function() {
-        var _this = this;
-
-        $(document)
-            .on(events.open, function() {
-                _this.onOpen();
-            })
-            .on(events.start, function() {
-                _this.onStart();
-            })
-            .on(events.load, function() {
-                _this.onLoad();
-            })
-            .on(events.close, function() {
-                _this.onClose();
-                _this.unbindUIActions();
-            })
-            .on(events.remove, function() {
-                _this.onRemove();
-            });
-    };
-
     Modal.prototype.unbindUIActions = function() {
-        var $target = (this.el !== null) ? this.$el : $(document);
-
         this.emitEvent('remove');
-        $target.off('.' + rocketName);
+        this.$el.off('.' + rocketName);
     };
 
     Modal.prototype.prepare = function() {
@@ -214,6 +192,8 @@
             $overlay = $('#uxr-modal-overlay'),
             _content = content.replace('{{id}}', 'uxr-modal-instance-' + this._instance),
             _appendTo = 'body';
+
+        this.emitEvent('start');
 
         if(this.options.appendTo !== 'body') {
             _appendTo = ($(utils.escapeSelector(this.options.appendTo)).length === 0) ? 'body' : this.options.appendTo;
@@ -588,7 +568,11 @@
         }
     };
 
-    ux.version = '1.2.3';
+    ux.getInstances = function() {
+        return openedInstances;
+    };
+
+    ux.version = '1.2.4';
 
     ux.settings = defaults;
 }));
