@@ -123,4 +123,4 @@ gulp.task('watch', ['csslint', 'sass', 'lint', 'scripts', 'mocha'], function() {
     gulp.watch(paths.lib + '**/*.js', ['lint', 'scripts', 'mocha']);
 });
 
-gulp.task('default', ['connect', 'watch']);
+gulp.task('default', ['watch']);
