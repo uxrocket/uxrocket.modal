@@ -31,7 +31,7 @@ $.uxrmodal({
 // load and html content
 var html = '<div class="my-content">' +
            '    <h2 class="my-content-title">Hello World</h2>' +
-           '    <p>This is the modal content</p> +
+           '    <p>This is the modal content</p>' +
            '</div>';
 
 $.uxrmodal({
