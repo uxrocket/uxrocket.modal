@@ -57,16 +57,22 @@ iframe        | false   | If true, the URL will load to an iFrame in the modal
 html          | false   | You can set an HTML content rather than a URL.
 fixed         | false   | Uses fixed position for the modal 
 
+If you use a cms or a backend heavy development environment, you can also set the plugin options via data attributes. Following table shows the name of the available data attributes for defining options.
+
+```html
+<a href="#modal-content" data-max-height="90%" data-fixed="true" data-on-close="refreshForm()">Open modal</a>
+```
+
 Data Attribute | Description
 -------------- | ------------------------------------------------------------------------
 class-name     | For advanced styling, allow to add your own style class to modal wrapper
 href           | URL to load. If an external URL, uses Ajax Get to load the URL. If it is an inline content e.g. a hidden div, uses its html
 width          | Width of the modal windows
 height         | Height of the modal windows
-maxWidth       | Max width of the modal windows. Add scrollbars when content is wider than the modal
-maxHeight      | Max height of the modal windows. Add scrollbars when content is longer than the modal
-appendTo       | Where to append the modal content in the DOM
-blockUI        | Adds an overlay at the top of the page
+max-width       | Max width of the modal windows. Add scrollbars when content is wider than the modal
+max-height      | Max height of the modal windows. Add scrollbars when content is longer than the modal
+append-to       | Where to append the modal content in the DOM
+block-u-i        | Adds an overlay at the top of the page
 overlay-close  | Closes the modals when clicking on the overlay
 allow-multiple | Allows to open more than one modal simultaneously
 close          | Turns on/off the close icon in the modal
@@ -78,6 +84,9 @@ on-open        | Calls the function when modal is opened
 on-start       | Calls the function when modal start to get content to show
 on-load        | Calls the function when modal fetched and loaded to content
 on-close	   | Calls the function when modal is closed
+on-remove	   | Calls the function when modal is removed
+
+There are also available callbacks automatically fired when an certain event occurred. The callbacks can set with plugin options.
 
 Callback			 | &nbsp;
 -------------------- | -----
@@ -86,6 +95,29 @@ onOpen       	     | Calls the function when modal is opened
 onStart     	     | Calls the function when modal start to get content to show
 onLoad      	     | Calls the function when modal fetched and loaded to content
 onClose		         | Calls the function when modal is closed
+onRemove	         | Calls the function when modal is remove
+
+### Event Hooks
+Plugin uses both generic events and custom events. All events triggered in *uxrModal* namespace. Rather than firing a function/method via callback you can attach your own method to plugin events. Note that, custom events are triggered on the binded element e.g. the anchor opens the modal. 
+
+```js
+$('.modal').on('uxrclose.uxrModal', function(){
+    form.submit(); // any method, function you want to define
+});
+```
+ 
+Event Name			 | &nbsp;
+-------------------- | -----
+uxrReady             | triggers when uxrModal binds to element for the first time
+uxrOpen              | triggers when modal windows opens, the overlay and loading screen become visible
+uxrStart             | triggers when modal content started to fetching, either from a inline source, html output or ajax call, or iframe
+uxrLoad              | triggers when modal content fetched and inserted to the visible modal screen
+uxrClose             | triggers when visible modal window closed either from clicking the overlay or close button
+uxrResize            | triggers when modal contents resized, (resize actions actually working when you set maxHeight or maxWidth options and shows scrollbars when need)
+uxrRemove            | triggers when uxrModal unbinds from the element.
+
+All these custom events except `uxrResize` also hooked the element itself when plugin is binded, and fires the callback options when triggered. `resize` method automatically called after content loaded to modal and `uxrResize` event triggered. 
+
 
 ### Public Methods
 Method						| Description
