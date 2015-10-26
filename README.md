@@ -86,7 +86,7 @@ on-load        | Calls the function when modal fetched and loaded to content
 on-close	   | Calls the function when modal is closed
 on-remove	   | Calls the function when modal is removed
 
-There are also available callbacks automatically fired when an certain event occurred. The callbacks can set with plugin options.
+There are also available callbacks automatically fired when a certain event occurred. These callbacks can set with plugin options.
 
 Callback			 | &nbsp;
 -------------------- | -----
@@ -108,15 +108,15 @@ $('.modal').on('uxrclose.uxrModal', function(){
  
 Event Name			 | &nbsp;
 -------------------- | -----
-uxrReady             | triggers when uxrModal binds to element for the first time
-uxrOpen              | triggers when modal windows opens, the overlay and loading screen become visible
-uxrStart             | triggers when modal content started to fetching, either from a inline source, html output or ajax call, or iframe
-uxrLoad              | triggers when modal content fetched and inserted to the visible modal screen
-uxrClose             | triggers when visible modal window closed either from clicking the overlay or close button
-uxrResize            | triggers when modal contents resized, (resize actions actually working when you set maxHeight or maxWidth options and shows scrollbars when need)
-uxrRemove            | triggers when uxrModal unbinds from the element.
+uxrready             | triggers when uxrModal binds to element for the first time
+uxropen              | triggers when modal windows opens, the overlay and loading screen become visible
+uxrstart             | triggers when modal content started to fetching, either from a inline source, html output or ajax call, or iframe
+uxrload              | triggers when modal content fetched and inserted to the visible modal screen
+uxrclose             | triggers when visible modal window closed either from clicking the overlay or close button
+uxrresize            | triggers when modal contents resized, (resize actions actually working when you set maxHeight or maxWidth options and shows scrollbars when need)
+uxrremove            | triggers when uxrModal unbinds from the element.
 
-All these custom events except `uxrResize` also hooked the element itself when plugin is binded, and fires the callback options when triggered. `resize` method automatically called after content loaded to modal and `uxrResize` event triggered. 
+All these custom events except `uxrresize` also hooked the element itself when plugin is binded, and fires the callback options when triggered. `resize` method automatically called after content loaded to modal and `uxrresize` event triggered. 
 
 
 ### Public Methods
