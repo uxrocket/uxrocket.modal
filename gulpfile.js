@@ -121,6 +121,7 @@ gulp.task('watch', ['csslint', 'sass', 'lint', 'scripts', 'mocha'], function() {
     gulp.watch(paths.lib + '**/*.scss', ['sass']);
     gulp.watch(paths.dist + '**/*.css', ['csslint']);
     gulp.watch(paths.lib + '**/*.js', ['lint', 'scripts', 'mocha']);
+    gulp.watch(['package.json', 'bower.json'], ['sass', 'scripts']);
 });
 
 gulp.task('default', ['watch']);
