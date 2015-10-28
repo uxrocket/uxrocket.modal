@@ -58,6 +58,12 @@
                     console.log("Direct Call/ onRemove: Modal plugin removed. When modal with direct call closed, it is automatically unbind from document");
                 }
             });
+
+            $(document).on('uxrclose.uxrModal', function(){
+                var closed = $.uxrmodal.getInstances();
+
+                console.log(closed.lastInstance);
+            });
         });
     </script>
 
@@ -91,7 +97,7 @@
     <div id="hidden-content" class="modal-window" style="width: 480px">
         <p>Sayfada normalde gizlenmiş olan bir içeriğin modal pencerede çağrılması</p>
 
-        <p>İkinci bir <a href="internal.html" class="modal">modal</a></p>
+        <p>İkinci bir <a href="internal.html" class="modal" data-allow-multiple="true">modal</a></p>
     </div>
 </div>
 
