@@ -128,3 +128,55 @@ $.uxrmodal.resize           | Resizes the opened modals
 $.uxrmodal.close            | Closes the opened modals
 $.uxrmodal.version          | Shows the plugin version
 $.uxrmodal.settings         | Shows the default settings
+$.uxrmodal.getInstances()   | Shows the open modals and the lastOpened modal instance. You can get the last remaining instance's properties when all modals are closed.
+
+```js
+var activeInstances = $.uxrmodal.getInstances();
+
+// you get an object with keys as instance IDs and lastInstance
+```
+
+Sample activeInstance
+
+```js
+// at least on modal is opened
+{
+    1: {
+        $content: n.fn.init[1], // modal content as
+        $el: '',
+        _defaults: Object,
+        _direct: false // opened via link
+        _instance: 1 // the instance id,
+        _name: 'uxrModal', // plugin name
+        el: 'a.modal',
+        href: 'somelink' // link to be open
+        html: '' // html output
+        inpage: false // indicates ajax call or iframe
+        options: Object // plugin options
+        previousInstance: Modal // modal instance opened before this modal. if only one modal present or multiple modal is not used, it is equal to the instance itself
+        selector: '.modal' // jQuery selector used to bind plugin
+    },
+    lastInstance: Modal // if every modals are closed, it is the active instance. Instance 1 in this sample. In multiple modal activated and a modal is recently closed, it is the last closed modal.
+}
+
+// multiple mode active, first instance 7 opened then instance 5 opened
+{
+    5: {
+        // ... other properties
+        _instance: 5,
+        previousInstance: Modal // is equal to instance 7
+    },
+    7: {
+        // ... other properties
+        _instance: 7,
+        previousInstance: Modal // is equal to instance 7 since 7 is the first opened instance.
+        
+    }
+    lastInstance: Modal // is equal to instance5
+}
+
+// every modal closed
+{
+    lastInstance: Modal // last closed modal's instance.
+}
+```
