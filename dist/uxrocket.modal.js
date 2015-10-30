@@ -620,7 +620,7 @@
     };
 
     ux.resize = function() {
-        var activeInstance = openedInstances[openedInstances.lastInstance];
+        var activeInstance = openedInstances.lastInstance;
 
         if(modal.hasInstances()) {
             activeInstance.resize();
@@ -628,7 +628,7 @@
     };
 
     ux.close = function() {
-        var activeInstance = openedInstances[openedInstances.lastInstance];
+        var activeInstance = openedInstances.lastInstance;
 
         if(modal.hasInstances()) {
             activeInstance.close();
@@ -639,7 +639,7 @@
         return openedInstances;
     };
 
-    ux.version = '1.3.2';
+    ux.version = '1.3.3';
 
     ux.settings = defaults;
 }));
