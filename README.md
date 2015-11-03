@@ -142,16 +142,16 @@ Sample activeInstance
 // at least on modal is opened
 {
     1: {
-        $content: n.fn.init[1], // modal content as
-        $el: '',
+        $content: n.fn.init[1], // modal container template as a jQuery instance
+        $el: n.fn.init[1], // jQuery instance of binded element
         _defaults: Object,
         _direct: false // opened via link
         _instance: 1 // the instance id,
         _name: 'uxrModal', // plugin name
         el: 'a.modal',
         href: 'somelink' // link to be open
-        html: '' // html output
-        inpage: false // indicates ajax call or iframe
+        html: 'some html' // html string when html string added to direct call, or a jQuery instance of the fetched html from ajax or inline source
+        inpage: false // indicates ajax call, iframe or an element in current page
         options: Object // plugin options
         previousInstance: Modal // modal instance opened before this modal. if only one modal present or multiple modal is not used, it is equal to the instance itself
         selector: '.modal' // jQuery selector used to bind plugin
