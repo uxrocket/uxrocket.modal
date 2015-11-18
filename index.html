@@ -1,0 +1,442 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>UXRocket Modal by uxrocket</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>UXRocket Modal</h1>
+        <p>Modal Plugin</p>
+
+        <p class="view"><a href="https://github.com/uxrocket/uxrocket.modal">View the Project on GitHub <small>uxrocket/uxrocket.modal</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/uxrocket/uxrocket.modal/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/uxrocket/uxrocket.modal/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/uxrocket/uxrocket.modal">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="ux-rocket-modal" class="anchor" href="#ux-rocket-modal" aria-hidden="true"><span class="octicon octicon-link"></span></a>UX Rocket Modal</h1>
+
+<p>A multi window capable modal plugin. It can easily customizable via its settings and styles.</p>
+
+<p>Sample usage</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>#hidden-content<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>modal<span class="pl-pds">"</span></span>&gt;Open Modal&lt;/<span class="pl-ent">a</span>&gt;</pre></div>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// with defaults</span>
+$(<span class="pl-s"><span class="pl-pds">'</span>.modal<span class="pl-pds">'</span></span>).modal();
+
+<span class="pl-c">// or with your settings</span>
+$(<span class="pl-s"><span class="pl-pds">'</span>.modal<span class="pl-pds">'</span></span>).modal({
+    fixed<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+    maxWidth<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>640px<span class="pl-pds">'</span></span>,
+    maxHeight<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>90%<span class="pl-pds">'</span></span>
+});</pre></div>
+
+<p>Also it supports direct call from your script, during on page load or after an event</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// load a URL</span>
+$.uxrmodal({
+    href<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>./modal-content.html<span class="pl-pds">'</span></span>
+});
+
+<span class="pl-c">// load and html content</span>
+<span class="pl-k">var</span> html <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>&lt;div class="my-content"&gt;<span class="pl-pds">'</span></span> <span class="pl-k">+</span>
+           <span class="pl-s"><span class="pl-pds">'</span>    &lt;h2 class="my-content-title"&gt;Hello World&lt;/h2&gt;<span class="pl-pds">'</span></span> <span class="pl-k">+</span>
+           <span class="pl-s"><span class="pl-pds">'</span>    &lt;p&gt;This is the modal content&lt;/p&gt;<span class="pl-pds">'</span></span> <span class="pl-k">+</span>
+           <span class="pl-s"><span class="pl-pds">'</span>&lt;/div&gt;<span class="pl-pds">'</span></span>;
+
+$.uxrmodal({
+    html<span class="pl-k">:</span> html
+});</pre></div>
+
+<h3>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h3>
+
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>className</td>
+<td>''</td>
+<td>For advanced styling, allow to add your own style class to modal wrapper</td>
+</tr>
+<tr>
+<td>href</td>
+<td>''</td>
+<td>URL to load. If an external URL, uses Ajax Get to load the URL. If it is an inline content e.g. a hidden div, uses its html</td>
+</tr>
+<tr>
+<td>width</td>
+<td>''</td>
+<td>Width of the modal windows</td>
+</tr>
+<tr>
+<td>height</td>
+<td>''</td>
+<td>Height of the modal windows</td>
+</tr>
+<tr>
+<td>maxWidth</td>
+<td>''</td>
+<td>Max width of the modal windows. Add scrollbars when content is wider than the modal</td>
+</tr>
+<tr>
+<td>maxHeight</td>
+<td>''</td>
+<td>Max height of the modal windows. Add scrollbars when content is longer than the modal</td>
+</tr>
+<tr>
+<td>appendTo</td>
+<td>body</td>
+<td>Where to append the modal content in the DOM. Overlay always appends to <code>body</code>
+</td>
+</tr>
+<tr>
+<td>allowMultiple</td>
+<td>false</td>
+<td>Allows to open more than one modal simultaneously</td>
+</tr>
+<tr>
+<td>blockUI</td>
+<td>true</td>
+<td>Adds an overlay at the top of the page</td>
+</tr>
+<tr>
+<td>overlayClose</td>
+<td>true</td>
+<td>Closes the modals when clicking on the overlay</td>
+</tr>
+<tr>
+<td>close</td>
+<td>true</td>
+<td>Turns on/off the close icon in the modal</td>
+</tr>
+<tr>
+<td>iframe</td>
+<td>false</td>
+<td>If true, the URL will load to an iFrame in the modal</td>
+</tr>
+<tr>
+<td>html</td>
+<td>false</td>
+<td>You can set an HTML content rather than a URL.</td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>false</td>
+<td>Uses fixed position for the modal</td>
+</tr>
+</tbody>
+</table>
+
+<p>If you use a cms or a backend heavy development environment, you can also set the plugin options via data attributes. Following table shows the name of the available data attributes for defining options.</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>#modal-content<span class="pl-pds">"</span></span> <span class="pl-e">data-max-height</span>=<span class="pl-s"><span class="pl-pds">"</span>90%<span class="pl-pds">"</span></span> <span class="pl-e">data-fixed</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-e">data-on-close</span>=<span class="pl-s"><span class="pl-pds">"</span>refreshForm()<span class="pl-pds">"</span></span>&gt;Open modal&lt;/<span class="pl-ent">a</span>&gt;</pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Data Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class-name</td>
+<td>For advanced styling, allow to add your own style class to modal wrapper</td>
+</tr>
+<tr>
+<td>href</td>
+<td>URL to load. If an external URL, uses Ajax Get to load the URL. If it is an inline content e.g. a hidden div, uses its html</td>
+</tr>
+<tr>
+<td>width</td>
+<td>Width of the modal windows</td>
+</tr>
+<tr>
+<td>height</td>
+<td>Height of the modal windows</td>
+</tr>
+<tr>
+<td>max-width</td>
+<td>Max width of the modal windows. Add scrollbars when content is wider than the modal</td>
+</tr>
+<tr>
+<td>max-height</td>
+<td>Max height of the modal windows. Add scrollbars when content is longer than the modal</td>
+</tr>
+<tr>
+<td>append-to</td>
+<td>Where to append the modal content in the DOM</td>
+</tr>
+<tr>
+<td>block-u-i</td>
+<td>Adds an overlay at the top of the page</td>
+</tr>
+<tr>
+<td>overlay-close</td>
+<td>Closes the modals when clicking on the overlay</td>
+</tr>
+<tr>
+<td>allow-multiple</td>
+<td>Allows to open more than one modal simultaneously</td>
+</tr>
+<tr>
+<td>close</td>
+<td>Turns on/off the close icon in the modal</td>
+</tr>
+<tr>
+<td>iframe</td>
+<td>If true, the URL will load to an iFrame in the modal</td>
+</tr>
+<tr>
+<td>html</td>
+<td>You can set an HTML content rather than a URL.</td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>Uses fixed position for the modal</td>
+</tr>
+<tr>
+<td>on-ready</td>
+<td>Calls the function when plugin is ready</td>
+</tr>
+<tr>
+<td>on-open</td>
+<td>Calls the function when modal is opened</td>
+</tr>
+<tr>
+<td>on-start</td>
+<td>Calls the function when modal start to get content to show</td>
+</tr>
+<tr>
+<td>on-load</td>
+<td>Calls the function when modal fetched and loaded to content</td>
+</tr>
+<tr>
+<td>on-close</td>
+<td>Calls the function when modal is closed</td>
+</tr>
+<tr>
+<td>on-remove</td>
+<td>Calls the function when modal is removed</td>
+</tr>
+</tbody>
+</table>
+
+<p>There are also available callbacks automatically fired when a certain event occurred. These callbacks can set with plugin options.</p>
+
+<table>
+<thead>
+<tr>
+<th>Callback</th>
+<th> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onReady</td>
+<td>Calls the function when plugin is ready</td>
+</tr>
+<tr>
+<td>onOpen</td>
+<td>Calls the function when modal is opened</td>
+</tr>
+<tr>
+<td>onStart</td>
+<td>Calls the function when modal start to get content to show</td>
+</tr>
+<tr>
+<td>onLoad</td>
+<td>Calls the function when modal fetched and loaded to content</td>
+</tr>
+<tr>
+<td>onClose</td>
+<td>Calls the function when modal is closed</td>
+</tr>
+<tr>
+<td>onRemove</td>
+<td>Calls the function when modal is remove</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="event-hooks" class="anchor" href="#event-hooks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Event Hooks</h3>
+
+<p>Plugin uses both generic events and custom events. All events triggered in <em>uxrModal</em> namespace. Rather than firing a function/method via callback you can attach your own method to plugin events. Note that, custom events are triggered on the binded element e.g. the anchor opens the modal. </p>
+
+<div class="highlight highlight-source-js"><pre>$(<span class="pl-s"><span class="pl-pds">'</span>.modal<span class="pl-pds">'</span></span>).on(<span class="pl-s"><span class="pl-pds">'</span>uxrclose.uxrModal<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(){
+    form.<span class="pl-c1">submit</span>(); <span class="pl-c">// any method, function you want to define</span>
+});</pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uxrready</td>
+<td>triggers when uxrModal binds to element for the first time</td>
+</tr>
+<tr>
+<td>uxropen</td>
+<td>triggers when modal windows opens, the overlay and loading screen become visible</td>
+</tr>
+<tr>
+<td>uxrstart</td>
+<td>triggers when modal content started to fetching, either from a inline source, html output or ajax call, or iframe</td>
+</tr>
+<tr>
+<td>uxrload</td>
+<td>triggers when modal content fetched and inserted to the visible modal screen</td>
+</tr>
+<tr>
+<td>uxrclose</td>
+<td>triggers when visible modal window closed either from clicking the overlay or close button</td>
+</tr>
+<tr>
+<td>uxrresize</td>
+<td>triggers when modal contents resized, (resize actions actually working when you set maxHeight or maxWidth options and shows scrollbars when need)</td>
+</tr>
+<tr>
+<td>uxrremove</td>
+<td>triggers when uxrModal unbinds from the element.</td>
+</tr>
+</tbody>
+</table>
+
+<p>All these custom events except <code>uxrresize</code> also hooked the element itself when plugin is binded, and fires the callback options when triggered. <code>resize</code> method automatically called after content loaded to modal and <code>uxrresize</code> event triggered. </p>
+
+<h3>
+<a id="public-methods" class="anchor" href="#public-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Public Methods</h3>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(selector).modal(options)</td>
+<td>Binds the plugin</td>
+</tr>
+<tr>
+<td>$.uxrmodal(options)</td>
+<td>Directly opens a modal with desired options</td>
+</tr>
+<tr>
+<td>$.uxrmodal.resize</td>
+<td>Resizes the opened modals</td>
+</tr>
+<tr>
+<td>$.uxrmodal.close</td>
+<td>Closes the opened modals</td>
+</tr>
+<tr>
+<td>$.uxrmodal.version</td>
+<td>Shows the plugin version</td>
+</tr>
+<tr>
+<td>$.uxrmodal.settings</td>
+<td>Shows the default settings</td>
+</tr>
+<tr>
+<td>$.uxrmodal.getInstances()</td>
+<td>Shows the open modals and the lastOpened modal instance. You can get the last remaining instance's properties when all modals are closed.</td>
+</tr>
+</tbody>
+</table>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> activeInstances <span class="pl-k">=</span> $.uxrmodal.getInstances();
+
+<span class="pl-c">// you get an object with keys as instance IDs and lastInstance</span></pre></div>
+
+<p>Sample activeInstance</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// at least on modal is opened</span>
+{
+    <span class="pl-c1">1</span><span class="pl-k">:</span> {
+        $content<span class="pl-k">:</span> n.fn.init[<span class="pl-c1">1</span>], <span class="pl-c">// modal container template as a jQuery instance</span>
+        $el<span class="pl-k">:</span> n.fn.init[<span class="pl-c1">1</span>], <span class="pl-c">// jQuery instance of binded element</span>
+        _defaults<span class="pl-k">:</span> <span class="pl-c1">Object</span>,
+        _direct<span class="pl-k">:</span> <span class="pl-c1">false</span> <span class="pl-c">// opened via link</span>
+        _instance<span class="pl-k">:</span> <span class="pl-c1">1</span> <span class="pl-c">// the instance id,</span>
+        _name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>uxrModal<span class="pl-pds">'</span></span>, <span class="pl-c">// plugin name</span>
+        el<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>a.modal<span class="pl-pds">'</span></span>,
+        href<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>somelink<span class="pl-pds">'</span></span> <span class="pl-c">// link to be open</span>
+        html<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>some html<span class="pl-pds">'</span></span> <span class="pl-c">// html string when html string added to direct call, or a jQuery instance of the fetched html from ajax or inline source</span>
+        inpage<span class="pl-k">:</span> <span class="pl-c1">false</span> <span class="pl-c">// indicates ajax call, iframe or an element in current page</span>
+        options<span class="pl-k">:</span> <span class="pl-c1">Object</span> <span class="pl-c">// plugin options</span>
+        previousInstance<span class="pl-k">:</span> Modal <span class="pl-c">// modal instance opened before this modal. if only one modal present or multiple modal is not used, it is equal to the instance itself</span>
+        selector<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>.modal<span class="pl-pds">'</span></span> <span class="pl-c">// jQuery selector used to bind plugin</span>
+    },
+    lastInstance<span class="pl-k">:</span> Modal <span class="pl-c">// if every modals are closed, it is the active instance. Instance 1 in this sample. In multiple modal activated and a modal is recently closed, it is the last closed modal.</span>
+}
+
+<span class="pl-c">// multiple mode active, first instance 7 opened then instance 5 opened</span>
+{
+    <span class="pl-c1">5</span><span class="pl-k">:</span> {
+        <span class="pl-c">// ... other properties</span>
+        _instance<span class="pl-k">:</span> <span class="pl-c1">5</span>,
+        previousInstance<span class="pl-k">:</span> Modal <span class="pl-c">// is equal to instance 7</span>
+    },
+    <span class="pl-c1">7</span><span class="pl-k">:</span> {
+        <span class="pl-c">// ... other properties</span>
+        _instance<span class="pl-k">:</span> <span class="pl-c1">7</span>,
+        previousInstance<span class="pl-k">:</span> Modal <span class="pl-c">// is equal to instance 7 since 7 is the first opened instance.</span>
+
+    }
+    lastInstance<span class="pl-k">:</span> Modal <span class="pl-c">// is equal to instance5</span>
+}
+
+<span class="pl-c">// every modal closed</span>
+{
+    lastInstance<span class="pl-k">:</span> Modal <span class="pl-c">// last closed modal's instance.</span>
+}</pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/uxrocket">uxrocket</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-52570271-4");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
