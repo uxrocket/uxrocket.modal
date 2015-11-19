@@ -2,6 +2,35 @@ UX Rocket Modal
 ==============
 A multi window capable modal plugin. It can easily customizable via its settings and styles.
 
+## Install
+
+Modal can directly install your project by copying the contents of `dist` folder to your assets, and [npm](https://www.npmjs.org/) or [bower](https://bower.io) packages. All dependent libraries will also installed with the packages. Just run, with npm;
+
+```
+npm install uxrocket.modal
+```
+
+or with Bower
+
+```
+bower install uxrocket.modal
+```
+Then, import files to your HTML
+
+```html
+<link rel="stylesheet" href="<path-to-bower_components>/uxrocket.modal/dist/uxrocket.modal.css" />
+
+<script src="<path-to-jquery"></script>
+<script src="<path-to-bower_components>/uxrocket.modal/dist/uxrocket.modal.min.js"></script>
+<script>
+    $(function(){
+        $('.modal').modal(); // for default settings
+    });
+</script>
+``` 
+
+if you want to use plugin in development mode, you can import `_uxrocket-modal.scss` file under `<path-to-bower_components>/uxrocket.modal/lib/` to your Sass
+
 Sample usage
 
 ```html
