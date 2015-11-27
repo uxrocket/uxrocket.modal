@@ -124,4 +124,4 @@ gulp.task('watch', ['csslint', 'sass', 'lint', 'scripts', 'mocha'], function() {
     gulp.watch(['package.json', 'bower.json'], ['sass', 'scripts']);
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch', 'connect']);
