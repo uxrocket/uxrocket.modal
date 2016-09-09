@@ -22,15 +22,15 @@
         instance        = 1,
 
         overlay         = '<div id="uxr-modal-overlay"></div>',
-        content         = '<div id="{{id}}" class="{{container}} {{loading}}">'                +
-                          '    <div class="{{drag}} {{hide}}"></div>'                          +
-                          '     {{#if title}}'                                                 +
-                          '         <h2 class="{{titleClass}}">{{title}}</h2>'                 +
-                          '     {{/if}}'                                                       +
-                          '    <div class="{{content}}">'                                      +
-                          '        <div class="{{loadedContent}}"></div>'                      +
-                          '    </div>'                                                         +
-                          '    <a href="#" class="{{close}} {{hide}}"></a>'                    +
+        content         = '<div id="{{id}}" class="{{container}} {{loading}}">' +
+                          '    <div class="{{drag}} {{hide}}"></div>'           +
+                          '     {{#if title}}'                                  +
+                          '         <h2 class="{{titleClass}}">{{title}}</h2>'  +
+                          '     {{/if}}'                                        +
+                          '    <div class="{{content}}">'                       +
+                          '        <div class="{{loadedContent}}"></div>'       +
+                          '    </div>'                                          +
+                          '    <a href="#" class="{{close}} {{hide}}"></a>'     +
                           '</div>',
         openedInstances = {},
 
