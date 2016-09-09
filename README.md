@@ -84,7 +84,8 @@ overlayClose  | true    | Closes the modals when clicking on the overlay
 close         | true    | Turns on/off the close icon in the modal
 iframe        | false   | If true, the URL will load to an iFrame in the modal 
 html          | false   | You can set an HTML content rather than a URL.
-fixed         | false   | Uses fixed position for the modal 
+fixed         | false   | Uses fixed position for the modal
+title         | ''      | Shows a title on top of modal windows
 
 If you use a cms or a backend heavy development environment, you can also set the plugin options via data attributes. Following table shows the name of the available data attributes for defining options.
 
@@ -107,7 +108,8 @@ allow-multiple | Allows to open more than one modal simultaneously
 close          | Turns on/off the close icon in the modal
 iframe         | If true, the URL will load to an iFrame in the modal 
 html           | You can set an HTML content rather than a URL.
-fixed          | Uses fixed position for the modal 
+fixed          | Uses fixed position for the modal
+title          | Shows a title on top of modal windows
 on-ready       | Calls the function when plugin is ready
 on-open        | Calls the function when modal is opened
 on-start       | Calls the function when modal start to get content to show

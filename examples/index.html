@@ -16,7 +16,8 @@
         $(function() {
             $(".modal").uxrmodal({maxHeight: '90%', maxWidth: '90%'});
             $(".modal2").uxrmodal({
-                html: "<p>Hello World!</p>"
+                html: "<p>Hello World!</p>",
+                title: "Dinamik İçerik"
             });
             $(".modal3").uxrmodal({
                 allowMultiple: true,
@@ -88,7 +89,7 @@
 
     <p>Başka bir <a href="http://bcinarli.com" id="iframe" class="modal" data-iframe="true" data-width="80%" data-height="80%">sayfaya</a> iframe</p>
 
-    <p>Sayfa içindeki <a href="#hidden-content" class="modal3" id="inline">gizli bir içerik</a> gösterimi.</p>
+    <p>Sayfa içindeki <a href="#hidden-content" class="modal3" data-title="Gizli İçerik" id="inline">gizli bir içerik</a> gösterimi.</p>
 
     <p>Callback <a href="./internal.html" class="modal" data-on-ready="onReady()" data-on-start="onStart()" data-on-open="onOpen()" data-on-load="onLoad()" data-on-close="onClose()">örnekleri</a>
         (console'da tetiklenen callbackleri görebilirsiniz).</p>

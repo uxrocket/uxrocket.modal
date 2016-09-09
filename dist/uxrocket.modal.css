@@ -44,6 +44,11 @@
   position: relative;
 }
 
+.uxr-modal-title {
+  position: relative;
+  padding-left: 20px;
+}
+
 .uxr-modal-content {
   width: 100%;
   max-height: 100%;

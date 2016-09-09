@@ -22,12 +22,14 @@
         instance        = 1,
 
         overlay         = '<div id="uxr-modal-overlay"></div>',
-        content         = '<div id="{{id}}" class="{{container}} {{loading}}">' +
-                          '    <div class="{{drag}} {{hide}}"></div>'           +
-                          '    <div class="{{content}}">'                       +
-                          '        <div class="{{loadedContent}}"></div>'       +
-                          '    </div>'                                          +
-                          '    <a href="#" class="{{close}} {{hide}}"></a>'     +
+        content         = '<div id="{{id}}" class="{{container}} {{loading}}">'                +
+                          '    <div class="{{drag}} {{hide}}"></div>'                          +
+                          '    <div class="{{content}}">'                                      +
+                          '        <h2 class="{{titleClass}} {{#if  !title}} {{hide}}{{/if}}">' +
+                          '            {{title}}</h2>'                                         +
+                          '        <div class="{{loadedContent}}"></div>'                      +
+                          '    </div>'                                                         +
+                          '    <a href="#" class="{{close}} {{hide}}"></a>'                    +
                           '</div>',
         openedInstances = {},
 
@@ -38,6 +40,7 @@
             height:        '',
             maxWidth:      '',
             maxHeight:     '',
+            title:         '',
             appendTo:      'body',
             allowMultiple: false,
             blockUI:       true,
@@ -84,6 +87,7 @@
                 container:     'container',
                 drag:          'drag',
                 content:       'content',
+                title:         'title',
                 loadedContent: 'loaded-content',
                 loading:       'loading',
                 close:         'close',
@@ -214,6 +218,8 @@
                 drag:          utils.getClassname('drag'),
                 hide:          utils.getClassname('hide'),
                 content:       utils.getClassname('content'),
+                titleClass:    utils.getClassname('title'),
+                title:         this.options.title,
                 loadedContent: utils.getClassname('loadedContent'),
                 close:         utils.getClassname('close')
             },
