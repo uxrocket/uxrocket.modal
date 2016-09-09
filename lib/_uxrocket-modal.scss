@@ -47,8 +47,9 @@ $modal-version: 1.2.3;
     }
 
     &-title {
-        position: relative;
-        padding-left: 20px;
+        position: absolute;
+        top: 0;
+        left: 10px;
     }
 
     &-content {

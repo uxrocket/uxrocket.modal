@@ -45,8 +45,9 @@
 }
 
 .uxr-modal-title {
-  position: relative;
-  padding-left: 20px;
+  position: absolute;
+  top: 0;
+  left: 10px;
 }
 
 .uxr-modal-content {
