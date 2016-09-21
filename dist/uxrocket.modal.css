@@ -42,6 +42,17 @@
 
 .uxr-modal-loaded-content, .uxr-modal-content {
   position: relative;
+  margin-top: 20px;
+}
+
+.uxr-modal-title {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .uxr-modal-content {

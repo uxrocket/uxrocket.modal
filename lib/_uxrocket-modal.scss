@@ -44,6 +44,17 @@ $modal-version: 1.2.3;
     &-loaded-content,
     &-content {
         position: relative;
+        margin-top: 20px;
+    }
+
+    &-title {
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     &-content {

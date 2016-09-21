@@ -24,6 +24,9 @@
         overlay         = '<div id="uxr-modal-overlay"></div>',
         content         = '<div id="{{id}}" class="{{container}} {{loading}}">' +
                           '    <div class="{{drag}} {{hide}}"></div>'           +
+                          '     {{#if title}}'                                  +
+                          '         <h2 class="{{titleClass}}">{{title}}</h2>'  +
+                          '     {{/if}}'                                        +
                           '    <div class="{{content}}">'                       +
                           '        <div class="{{loadedContent}}"></div>'       +
                           '    </div>'                                          +
@@ -38,6 +41,7 @@
             height:        '',
             maxWidth:      '',
             maxHeight:     '',
+            title:         '',
             appendTo:      'body',
             allowMultiple: false,
             blockUI:       true,
@@ -84,6 +88,7 @@
                 container:     'container',
                 drag:          'drag',
                 content:       'content',
+                title:         'title',
                 loadedContent: 'loaded-content',
                 loading:       'loading',
                 close:         'close',
@@ -214,8 +219,10 @@
                 drag:          utils.getClassname('drag'),
                 hide:          utils.getClassname('hide'),
                 content:       utils.getClassname('content'),
+                titleClass:    utils.getClassname('title'),
                 loadedContent: utils.getClassname('loadedContent'),
-                close:         utils.getClassname('close')
+                close:         utils.getClassname('close'),
+                title:         this.options.title
             },
             _content  = utils.render(content, data),
             _appendTo = 'body';
@@ -611,7 +618,7 @@
         return openedInstances;
     };
 
-    ux.version = '1.4.2';
+    ux.version = '1.5.0';
 
     ux.settings = defaults;
 }));
