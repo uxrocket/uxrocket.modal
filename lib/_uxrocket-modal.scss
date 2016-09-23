@@ -50,14 +50,15 @@ $modal-version: 1.2.3;
     &-title {
         position: absolute;
         top: 5px;
-        left: 10px;
-        width: calc(100% - 50px);
+        left: 0;
+        width: calc(100% - 27px);
         line-height: 1.5;
         z-index: 10;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
         background: white;
+        padding-left: 10px;
     }
 
     &-content {
