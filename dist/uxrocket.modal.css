@@ -42,7 +42,7 @@
 
 .uxr-modal-loaded-content, .uxr-modal-content {
   position: relative;
-  top: 15px;
+  margin-top: 20px;
 }
 
 .uxr-modal-title {
