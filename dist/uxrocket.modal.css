@@ -42,17 +42,20 @@
 
 .uxr-modal-loaded-content, .uxr-modal-content {
   position: relative;
-  margin-top: 20px;
+  top: 15px;
 }
 
 .uxr-modal-title {
   position: absolute;
   top: 5px;
   left: 10px;
-  width: 100%;
+  width: calc(100% - 50px);
+  line-height: 1.5;
+  z-index: 10;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  background: white;
 }
 
 .uxr-modal-content {
