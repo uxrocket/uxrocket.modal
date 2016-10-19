@@ -222,7 +222,7 @@
                 titleClass:    utils.getClassname('title'),
                 loadedContent: utils.getClassname('loadedContent'),
                 close:         utils.getClassname('close'),
-                title:         this.options.title
+                title:         !!this.options.title ? this.options.title : false
             },
             _content  = utils.render(content, data),
             _appendTo = 'body';
@@ -618,7 +618,7 @@
         return openedInstances;
     };
 
-    ux.version = '1.5.2';
+    ux.version = '1.5.3';
 
     ux.settings = defaults;
 }));
