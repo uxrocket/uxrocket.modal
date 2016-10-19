@@ -23,7 +23,7 @@
 
         overlay         = '<div id="uxr-modal-overlay"></div>',
         content         = '<div id="{{id}}" class="{{container}} {{loading}}">' +
-                          '    <div class="{{drag}} {{hide}}"></div>'           +
+                          '    <div class="{{drag}} {{#if draggable}} {{hide}} {{/if}}"></div>'+
                           '     {{#if title}}'                                  +
                           '         <h2 class="{{titleClass}}">{{title}}</h2>'  +
                           '     {{/if}}'                                        +
@@ -50,6 +50,7 @@
             iframe:        false,
             html:          false,
             fixed:         false,
+            draggable:     false,
 
             onReady:  false,
             onOpen:   false,
@@ -222,7 +223,8 @@
                 titleClass:    utils.getClassname('title'),
                 loadedContent: utils.getClassname('loadedContent'),
                 close:         utils.getClassname('close'),
-                title:         !!this.options.title ? this.options.title : false
+                title:         !!this.options.title ? this.options.title : false,
+                draggable:     this.options.draggable === 'true' ? false : true
             },
             _content  = utils.render(content, data),
             _appendTo = 'body';
@@ -618,7 +620,7 @@
         return openedInstances;
     };
 
-    ux.version = '1.5.3';
+    ux.version = '1.6.0';
 
     ux.settings = defaults;
 }));

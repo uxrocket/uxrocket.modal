@@ -86,6 +86,7 @@ iframe        | false   | If true, the URL will load to an iFrame in the modal
 html          | false   | You can set an HTML content rather than a URL.
 fixed         | false   | Uses fixed position for the modal
 title         | ''      | Shows a title on top of modal windows
+draggable     | false   | Makes the modal draggable
 
 If you use a cms or a backend heavy development environment, you can also set the plugin options via data attributes. Following table shows the name of the available data attributes for defining options.
 
@@ -110,6 +111,7 @@ iframe         | If true, the URL will load to an iFrame in the modal
 html           | You can set an HTML content rather than a URL.
 fixed          | Uses fixed position for the modal
 title          | Shows a title on top of modal windows
+draggable      | Makes the modal draggable
 on-ready       | Calls the function when plugin is ready
 on-open        | Calls the function when modal is opened
 on-start       | Calls the function when modal start to get content to show
