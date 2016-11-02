@@ -22,15 +22,15 @@
         instance        = 1,
 
         overlay         = '<div id="uxr-modal-overlay"></div>',
-        content         = '<div id="{{id}}" class="{{container}} {{loading}}">' +
+        content         = '<div id="{{id}}" class="{{container}} {{loading}}">'                +
                           '    <div class="{{drag}} {{#if draggable}} {{hide}} {{/if}}"></div>'+
-                          '     {{#if title}}'                                  +
-                          '         <h2 class="{{titleClass}}">{{title}}</h2>'  +
-                          '     {{/if}}'                                        +
-                          '    <div class="{{content}}">'                       +
-                          '        <div class="{{loadedContent}}"></div>'       +
-                          '    </div>'                                          +
-                          '    <a href="#" class="{{close}} {{hide}}"></a>'     +
+                          '     {{#if title}}'                                                 +
+                          '         <h2 class="{{titleClass}}">{{title}}</h2>'                 +
+                          '     {{/if}}'                                                       +
+                          '    <div class="{{content}}">'                                      +
+                          '        <div class="{{loadedContent}}"></div>'                      +
+                          '    </div>'                                                         +
+                          '    <a href="#" class="{{close}} {{hide}}"></a>'                    +
                           '</div>',
         openedInstances = {},
 
@@ -620,7 +620,7 @@
         return openedInstances;
     };
 
-    ux.version = '1.6.0';
+    ux.version = '1.6.1';
 
     ux.settings = defaults;
 }));

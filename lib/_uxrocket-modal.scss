@@ -37,14 +37,14 @@ $modal-version: 1.2.3;
         top: 0;
         left: 0;
         cursor: move;
-        width: 100%;
+        width: calc(100% - 40px);
         height: 24px;
+        z-index: 1;
     }
 
     &-loaded-content,
     &-content {
         position: relative;
-        margin-top: 20px;
     }
 
     &-title {
@@ -59,6 +59,10 @@ $modal-version: 1.2.3;
         text-overflow: ellipsis;
         background: white;
         padding-left: 10px;
+    }
+
+    &-title ~ &-content {
+        margin-top: 20px;
     }
 
     &-content {
