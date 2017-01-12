@@ -146,7 +146,8 @@
     };
 
     Modal.prototype.bindUIActions = function() {
-        var _this = this;
+        var _this = this,
+            dragTimer;
 
         this.$el
             .on(events.click, function(e) {
@@ -193,7 +194,12 @@
 
         $(document)
             .on(events.mousemove + ' ' + events.touchmove, function(e) {
-                modal.move.drag(e);
+                if (dragTimer) {
+                    clearTimeout(dragTimer);
+                }
+                dragTimer = setTimeout(function() {
+                    modal.move.drag(e);
+                }, 100);
             }).on(events.mouseup + ' ' + events.touchend, function() {
             modal.move.stop();
         });
@@ -544,10 +550,11 @@
                 }
             },
             drag:     function(e) {
-                var pointer = this.pointer(e);
+                var pointer = this.pointer(e),
+                    scrollTop = $(window).scrollTop();
 
                 if(this.selected) {
-                    this.selected.$content[0].style.top  = pointer.y + (this.selected.$content.height() / 2) + 'px';
+                    this.selected.$content[0].style.top  = pointer.y - scrollTop + (this.selected.$content.height() / 2) + 'px';
                     this.selected.$content[0].style.left = pointer.x + 'px';
                 }
             },
