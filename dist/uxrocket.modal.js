@@ -361,6 +361,8 @@
             .find('.' + utils.getClassname('close'))
             .addClass(utils.getClassname('hide'));
 
+        this.$content.find('#uxr-notifications').remove();
+
         modal.close(this);
 
         if(this.$ph) {
