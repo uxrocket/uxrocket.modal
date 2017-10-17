@@ -206,7 +206,7 @@
 
         $(window).on(events.wresize, function() {
             if(openedInstances[_this._instance] !== undefined) {
-                _this.resize();
+                //_this.resize();
             }
         });
     };
@@ -506,7 +506,7 @@
     Modal.prototype.getOpenedInstances = function() {
         return openedInstances;
     };
-
+    var zIndex;
     var modal = {
         registerInstance: function(instance) {
             openedInstances[instance._instance] = instance;
@@ -539,17 +539,16 @@
             previous: false,
             start:    function(instance, e) {
                 var pointer = this.pointer(e);
-
                 this.selected = instance;
-                this.selected.$content.css('zIndex', 10001);
+                zIndex = this.selected.$content.css('zIndex');
+                this.selected.$content.css('zIndex', 20001);
                 this.pos.top  = pointer.y - this.selected.$content[0].offsetTop;
                 this.pos.left = pointer.x - this.selected.$content[0].offsetLeft;
-
                 if(!this.previous) {
                     this.previous = instance;
                 }
                 else {
-                    this.previous.$content.css('zIndex', 10000);
+                    this.previous.$content.css('zIndex', ( this.previous.$content.css('zIndex') || 1000 ) );
                 }
             },
             drag:     function(e) {
@@ -563,6 +562,7 @@
             },
             stop:     function() {
                 if(this.selected) {
+                    this.selected.$content.css('zIndex', zIndex);
                     this.previous = this.selected;
                     this.selected = false;
                 }
@@ -630,7 +630,7 @@
         return openedInstances;
     };
 
-    ux.version = '1.6.3';
+    ux.version = '1.6.4';
 
     ux.settings = defaults;
 }));
