@@ -120,6 +120,7 @@
         instance++;
 
         this.init();
+       
     };
 
     Modal.prototype.init = function() {
@@ -180,9 +181,6 @@
             });
 
         $('body')
-            .on(events.click + ' ' + events.touchstart, '#uxr-modal-overlay', function() {
-                modal.closeFromOverlay();
-            })
             .on(events.click + ' ' + events.touchstart, '#uxr-modal-instance-' + _this._instance + ' .' + utils.getClassname('close'), function(e) {
                 e.preventDefault();
                 _this.close();
@@ -506,16 +504,52 @@
     Modal.prototype.getOpenedInstances = function() {
         return openedInstances;
     };
+
+    /**
+     * increase overlay z-index when opened multiple modal
+     */
+    var setOverlayZIndex = function () {
+        var $overlay  = $('#uxr-modal-overlay');
+        var zIndex = Number( openedInstances.lastInstance.$content[0].style.zIndex ) - 1;
+        $overlay.css('z-index', zIndex);
+    };
+
+
     var zIndex;
     var modal = {
+        /**
+         * increase modal content z-index when opened multiple modal
+         * 
+         * @param {object} instance 
+         * @param {boolean} hasOpened 
+         */
+        setModalZIndex: function( instance, hasOpened ) {
+            var defaultZIndex = Number( instance.$content.css('z-index') ) || 10000;
+            console.warn('defaultZIndex', defaultZIndex);
+            var totalInstance = Object.keys(openedInstances).length;
+            if ( hasOpened ) {
+                var zIndex = ( defaultZIndex - (totalInstance * 2 ) ) ;
+            }else {
+                var zIndex = ( defaultZIndex + (totalInstance * 2 ) ) ;
+            }
+            instance.$content.css('z-index', zIndex);
+            console.warn('instance', instance.$content.css('z-index'), instance);
+        },
         registerInstance: function(instance) {
+            console.warn('instance', instance);
             openedInstances[instance._instance] = instance;
             instance.previousInstance           = modal.isOnlyInstance() ? instance : (openedInstances.lastInstance || instance);
             openedInstances.lastInstance        = instance;
+            this.setModalZIndex( instance, false );
+            setOverlayZIndex();
         },
         close:            function(instance) {
             openedInstances.lastInstance = instance.previousInstance;
             delete openedInstances[instance._instance];
+
+            this.setModalZIndex( instance, true);
+            setOverlayZIndex();
+
         },
         closeFromOverlay: function() {
             if(openedInstances.lastInstance.options.overlayClose) {
@@ -582,6 +616,15 @@
         }
     };
 
+
+    $(function() {
+        $('body')
+            .on(events.click + ' ' + events.touchstart, '#uxr-modal-overlay', function() {
+                modal.closeFromOverlay();
+            })
+    });
+    
+
     ux = $.fn.modal = $.fn.uxrmodal = $.uxrmodal = function(options) {
         var selector = this.selector;
 
@@ -604,9 +647,12 @@
 
     ux.remove = function(el) {
         var $el = typeof el === 'undefined' ? $('.' + utils.getClassname('ready')) : $(el);
-
+        if ( !$el.length ) { return; }
         $el.each(function() {
-            $(this).data(ns.data).remove();
+            var data = $(this).data(ns.data);
+            if ( data ) {
+                data.remove();
+            }
         });
     };
 
@@ -630,7 +676,7 @@
         return openedInstances;
     };
 
-    ux.version = '1.6.4';
+    ux.version = '1.6.10';
 
     ux.settings = defaults;
 }));
