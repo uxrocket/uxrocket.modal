@@ -199,7 +199,7 @@
                 }
                 dragTimer = setTimeout(function() {
                     modal.move.drag(e);
-                }, 100);
+                }, 1);
             }).on(events.mouseup + ' ' + events.touchend, function() {
             modal.move.stop();
         });
@@ -678,7 +678,7 @@
         return openedInstances;
     };
 
-    ux.version = '1.6.11';
+    ux.version = '1.6.12';
 
     ux.settings = defaults;
 }));

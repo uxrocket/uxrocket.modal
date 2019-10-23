@@ -65,6 +65,32 @@
                 }
             });
 
+            $.uxrmodal({
+                maxHeight: '90%', maxWidth: '90%',
+                href      : './internal.html',
+                title     : 'Yüklenen',
+                onReady   : function() {
+                    console.log("Modal 2 Direct Call/ onReady: Modal plugin bind to element");
+                }, onStart: function() {
+                    console.log("Modal 2 Direct Call/ onStart: Modal plugin started to open");
+                },
+                onOpen    : function() {
+                    console.log("Modal 2 Direct Call/ onOpen: Modal plugin window opened and stated to load");
+                },
+                onLoad    : function() {
+                    console.log("Modal 2 Direct Call/ onLoad: Modal plugin content loaded");
+                },
+                onClose   : function() {
+                    console.log("Modal 2 Direct Call/ onClose: Modal plugin closed");
+                },
+                onRemove  : function() {
+                    console.log("Modal 2 Direct Call/ onRemove: Modal plugin removed. When modal with direct call closed, it is automatically unbind from document");
+                },
+                events: {
+                    touchstart: null
+                }
+            });
+
             $(document).on('uxrclose.uxrModal', function(){
                 var closed = $.uxrmodal.getInstances();
 
